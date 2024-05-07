@@ -31,18 +31,6 @@ pulseaudio
 
 export PULSE_SERVER=127.0.0.1;
  --->
-for windows:
-first download and install virtual box from  [here](https://download.virtualbox.org/virtualbox/7.0.12/VirtualBox-7.0.12-159484-Win.exe)
-
-download debian 12 Bookworm amd64 from  [here](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.4.0-amd64-netinst.iso)
-
-install debian 12 Bookworm on virtual box untested instructions can be found [here](https://www.makeuseof.com/how-to-install-debian-on-virtualbox/
-)
-
-install Guest Additions for linux, untested instructions can be found [here](https://wiki.debian.org/VirtualBox#Installing_the_Guest_Additions_on_a_Debian_VM)
-
-then follow the following insturctions for linux:
-
 on linux:(developed and tested on Linux mint and debian 12 bookworm)
 
 on mint preciede every apt-get with sudo
@@ -92,31 +80,5 @@ pip3 install vosk
 vosk-transcriber -i rec.wav -o rec.txt
 
 ./VoxAssist.lua
-
-
-
-—up to here most things have been implemented
-
-To do:
-
-0). need to add a feture to editor to move chuncks of code aroudn in a file, like move lines form line 20 to line 30 to line 15
-
-1). Blind Menu (a kind of desktop for those who prefer to use a menu rather than commands, works kind of like a menu on the telephone)
-
-2). BlindWEB (A web client that accesses a group of webpages designed  specifically for the blind), this will also allow people to host their own applications made for BlindOS on the web 
-
-3). Blind Mail Client
-
-4). Blind Music Player
-
-5). Blind App Downloader(package manager)
-
-Other applications for the blind are welcome and will be added to BlindOS
-
-known bugs:
-
-FIXED-virc quits qith Excess Flood after flooding PONG for some reason
-
-running as ./runBlindOE.py sometimes ends up with an eternal loop of just entering and quitting from BlindOE
 
 # Join me in irc.libera.chat in channel #BlindOE
