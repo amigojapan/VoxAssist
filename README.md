@@ -8,30 +8,7 @@ please bare with the voice for first video, the voice improves after in the seco
 alt="video demo of ejspeak" width="100" height="80" border="10" /></a>
 
 
-<!---
-on windows:(I am still having touble running it on windows, but i am determined ot get it wokring on windows)
 
-install wsl2
-
-install a linux distro from microsoft store, insttuctions for ubuntu are given here
-
-install pulse audio for windows
-
-https://x410.dev/cookbook/wsl/enabling-sound-in-wsl-ubuntu-let-it-sing/
-
-
-open ubuntu
-
-type:
-
-sudo apt-get install pulseaudio
-
-you will need to type this each time, you may want to put it in .bashrc
-
-pulseaudio
-
-export PULSE_SERVER=127.0.0.1;
- --->
 on linux:(developed and tested on Linux mint and debian 12 bookworm)
 
 on mint preciede every apt-get with sudo
@@ -82,4 +59,4 @@ vosk-transcriber -i rec.wav -o rec.txt
 
 ./VoxAssist.lua
 
-# Join me in irc.libera.chat in channel #BlindOE
+# Join me in irc.libera.chat in channels #VoxAssist and #BlindOE
