@@ -59,4 +59,4 @@ vosk-transcriber -i rec.wav -o rec.txt
 
 ./VoxAssist.lua
 
-# Join me in irc.libera.chat in channels #VoxAssist and #BlindOE
+# Join me in irc.libera.chat in channels <a href="https://web.libera.chat/#VoxAssist">#VoxAssist</a> and #BlindOE
