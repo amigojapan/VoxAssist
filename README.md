@@ -72,7 +72,7 @@ clone this repo
 
 git clone https://github.com/amigojapan/VoxAssist
 
-cd BlindOS
+cd VoxAssist
 
 edit tmpDir="/home/amigojapan/projects/VoxAssist/tmp" in settings.lua. it must be a full absolute path to BlindOS/tmp
 
