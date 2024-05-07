@@ -4,8 +4,9 @@ Copyright 2014 Usmar A. Padow (amigojapan) usmpadow@gmail.com
 
 please bare with the voice for first video, the voice improves after in the second video:
 
-<a href="https://youtu.be/IN-rEne0eFM?si=rzq6De4hgqESFxUM" target="_blank"><img src="https://raw.githubusercontent.com/amigojapan/BlindOS/master/youtube%20play%20button.jpg" 
+<a href="https://youtu.be/KLuySOD2Zr0?si=w7zgzn1QdgQ2vXsw" target="_blank"><img src="https://raw.githubusercontent.com/amigojapan/BlindOS/master/youtube%20play%20button.jpg" 
 alt="video demo of ejspeak" width="100" height="80" border="10" /></a>
+
 
 <!---
 on windows:(I am still having touble running it on windows, but i am determined ot get it wokring on windows)
