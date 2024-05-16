@@ -1,10 +1,65 @@
 #my favorite number is two hundred and fifty three point two how about yours?
 #my favorite number is 253.2 how about yours?
 #todo move or get rid of simbols after the last number word
-#handle numbers like "one two three" (still problems when I so even something like seven , three"
+#(done)handle numbers like "one two three" (still problems when I so even something like seven , three"
 #(done)handle multiple numbers in the same sentence
 import words2num as w2n
 #import pdb
+
+stringPhrase="my favorite number is two hundred and fifty three point two , my favorite single numbers are single numbers start one two three end single numbers how about yours?"
+def delete_keyword(text, keyword):
+    return text.replace(keyword, '')
+
+def replace_words_with_numbers(text):
+    word_to_number = {
+        "zero": "0",
+        "one": "1",
+        "two": "2",
+        "three": "3",
+        "four": "4",
+        "five": "5",
+        "six": "6",
+        "seven": "7",
+        "eight": "8",
+        "nine": "9"
+    }
+    
+    # Split the text into words
+    words = text.split()
+    
+    # Replace words with numbers if they are in the dictionary
+    for i in range(len(words)):
+        word = words[i].lower()  # Convert to lowercase to handle case sensitivity
+        if word in word_to_number:
+            words[i] = word_to_number[word]
+    
+    # Join the words back into a string
+    return ' '.join(words)
+
+def extract_between_keywords(text, start_keyword, end_keyword):
+    try:
+        start_index = text.index(start_keyword) + len(start_keyword)
+        end_index = text.index(end_keyword, start_index)
+        return text[start_index:end_index].strip()
+    except ValueError as e:
+        return str(e)
+
+start_keyword = "single numbers start"
+end_keyword = "end single numbers"
+
+singleNumbersText=extract_between_keywords(stringPhrase, start_keyword, end_keyword)
+numbers=replace_words_with_numbers(singleNumbersText)
+
+def replace_between_keywords(text, start_keyword, end_keyword, replacement):
+    try:
+        start_index = text.index(start_keyword) + len(start_keyword)
+        end_index = text.index(end_keyword, start_index)
+        new_text = text[:start_index] + replacement + text[end_index:]
+        return new_text
+    except ValueError as e:
+        return str(e)
+
+stringPhrase = replace_between_keywords(stringPhrase, start_keyword, end_keyword, numbers)
 
 def extract_string_between_indices(input_string, start_index, end_index):
     # Split the input string into words
@@ -69,42 +124,16 @@ def conv(stringPhrase):
 
 numberDetected=True
 #stringPhrase="my favorite single number is two how about yours?"
-stringPhrase="my favorite number is two hundred and fifty three point two , my favorite single numbers is three how about yours?"
 originalPhrase=stringPhrase
 while numberDetected:
 	wordIndex, startIndex, endIndex, numberDetected,res=conv(stringPhrase)
 	stringPhrase=res
 
+stringPhrase=delete_keyword(stringPhrase, start_keyword)
+stringPhrase=delete_keyword(stringPhrase, end_keyword)
+res=stringPhrase
+
 print(originalPhrase)
 print("converted to:")
 print(res)
 
-def replace_words_with_numbers(text):
-    word_to_number = {
-        "zero": "0",
-        "one": "1",
-        "two": "2",
-        "three": "3",
-        "four": "4",
-        "five": "5",
-        "six": "6",
-        "seven": "7",
-        "eight": "8",
-        "nine": "9"
-    }
-    
-    # Split the text into words
-    words = text.split()
-    
-    # Replace words with numbers if they are in the dictionary
-    for i in range(len(words)):
-        word = words[i].lower()  # Convert to lowercase to handle case sensitivity
-        if word in word_to_number:
-            words[i] = word_to_number[word]
-    
-    # Join the words back into a string
-    return ' '.join(words)
-
-# Example usage:
-print("converst single numbers:")
-print(replace_words_with_numbers(res))
