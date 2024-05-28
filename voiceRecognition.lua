@@ -167,9 +167,29 @@ end
 
 function voiceRecognize()
 	local output = os.capture("./voiceRecognizer.bash",true)
-	return output
+	    
+    return output
 end
 
+function convertWords2Numbers(input)
+    -- Open the file in append mode
+    local file = io.open("./tmp/interface.txt", "w")
+
+    -- Check if the file was successfully opened
+    if not file then
+        print("Error: Could not open the file interface.txt")
+        os.exit()
+    end
+
+    -- Append content to the file
+    file:write(input)
+
+    -- Close the file
+    file:close()
+
+    local output = os.capture("python3 wordsToNumberConverter.py",true)
+    return output
+end
 function io.voiceInput()
 	print("voice input ready:")
 	voiceRecord()

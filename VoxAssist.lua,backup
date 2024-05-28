@@ -76,7 +76,7 @@ function findAfterIndex(str,index)
 end
 
 --commands
---so list programs, asnwer question, make folder, delete file, delete folder, list files, edit file, I think those are all the menu options I need?
+--so list programs, make folder, delete file, delete folder, list files, edit file, coommand help, quit to linux, I think those are all the menu options I need?
 --5:35 PM <amigojapan> change directory
 menutable={
 	"my dear computer please tell me the system commands",
@@ -123,53 +123,40 @@ while quit==false do
 
 	found=false
 	possible_commands = {}
-	parameters={}
+	parameters=""
 	--get the same string form the substrings_of_command as from the menu items
 	for index, menu_item_split in ipairs(menu_items_split) do
 		--print("#substrings_of_command".. #substrings_of_command .. "#menu_item_split" .. #menu_item_split)
 		--consider comparing even if the condition udnerneeth is not
 		--attained, maybe cut on #menu_item_split
-		--if (#substrings_of_command >= #menu_item_split) then
-		param=findAfterIndex(command_input,#menu_item_split)
-		table.insert(parameters, param)
-		print("param:"..param)
-		joined_menu_item = joinTable(menu_item_split, #menu_item_split)
-		difference_in_length=  #substrings_of_command -#menu_item_split
-		if(difference_in_length<0) then
-			trimmed_command = joinTable(substrings_of_command, #substrings_of_command)
-		else	
-			--print("1difference_in_length:".. difference_in_length .. "#substrings_of_command:" .. #substrings_of_command .. "#menu_item_split:" .. #menu_item_split)
-			number_of_commands=#menu_item_split - difference_in_length
-			--print("2number_of_commands:".. number_of_commands .. "#substrings_of_command:" .. #substrings_of_command .. "#menu_item_split:" .. #menu_item_split)
-			trimmed_command = joinTable(substrings_of_command, number_of_commands)
+		if (#substrings_of_command >= #menu_item_split) then
+			parameters =findAfterIndex(command_input,#menu_item_split)
+			print("parameters"..parameters)
+			joined_menu_item = joinTable(menu_item_split, #menu_item_split)
+			trimmed_command = joinTable(substrings_of_command, #menu_item_split)
+			found=true
+			percentage=percentageEqual(trimmed_command,joined_menu_item)
+			print("actually recognized text:" .. command_input)
+			--print("trimmed_command:" .. trimmed_command .." joined_menu_items:" .. joined_menu_items)
+			print("comparing "..joined_menu_item.." to " ..trimmed_command .. ", equality ".. math.floor(percentage).." percent equal...")
+			table.insert(possible_commands, percentage)
+		else
+			table.insert(possible_commands, 0)
 		end
-		--found=true
-		percentage=percentageEqual(trimmed_command,joined_menu_item)
-		print("actually recognized text:" .. command_input)
-		--print("trimmed_command:" .. trimmed_command .." joined_menu_items:" .. joined_menu_items)
-		print("comparing "..joined_menu_item.." to " ..trimmed_command .." percent equal...")
-
-		print(" equality ".. math.floor(percentage))
-		table.insert(possible_commands, percentage)
-		--else
-		--	table.insert(possible_commands, 0)
-		--end
 	end
-	--if not found then
-	--	speakAndPrint("command not found or too short.",false)
-	--	goto start
-	--end
+	if not found then
+		speakAndPrint("command not found or too short.",false)
+		goto start
+	end
 	maxval=getMaxValue(possible_commands)
 	key=findValueInTable(possible_commands,maxval)
 	dumpTable(menutable)
 	dumpTable(possible_commands)
 	print("key:" ..  key)
-	if maxval < 85 then
-		speakAndPrint("sorry I did not catch what you said well")
-	elseif key == 1 then
+	if key == 1 then
 		help(menutable)
 	elseif key == 2 then
-		run_program(parameters[2])
+		run_program(parameters)
 	elseif key == 3 then
 		os.exit()
 	elseif key == 4 then
