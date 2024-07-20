@@ -82,7 +82,9 @@ menutable={
 	"my dear computer please tell me the system commands",
 	"my dear computer please run program",
 	"my dear computer please quit",
-	"my dear computer please tell me the date and time"
+	"my dear computer please tell me the date and time",
+	"keyboard input",
+	"voice input"
 }
 if(not advacedMode) then
 	speakAndPrint("Welcome to Vox Assist Operating Environment",false)
@@ -94,7 +96,7 @@ quit=false
 while quit==false do
 	::start::
 	speakAndPrint(translate["Enter command:"],false)
-	local command_input = InputVoiceOrKeyboard()
+	local command_input = io.voiceInput()--InputVoiceOrKeyboard()
 	if command_input==nil or command_input=="" then
 		print("error command nil")
         goto start--used this cause there is not continue in lua
@@ -174,6 +176,10 @@ while quit==false do
 		os.exit()
 	elseif key == 4 then
 		sayDateAndTIme()
+	elseif key == 5 then
+		speakAndPrint("Switching to keyboard input")
+	elseif key == 6 then
+		speakAndPrint("Switching to voice input")
 	end
 	--•amigojapan> yeah I think this needs ot be thought of more deeply
 	--7:10 PM <•amigojapan> big-MAC: maybe run the diff first, on the menu items, and then on the list of programs in programs directory woudl be perfect

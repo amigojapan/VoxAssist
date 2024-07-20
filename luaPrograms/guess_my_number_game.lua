@@ -113,9 +113,13 @@ speakAndPrint("welcome to the guess my number game")
 speakAndPrint("The computer has chosen a number from 1 to 99, please guess the number.")
 ::start::
 	speakAndPrint("input your guess:")
-	local input = InputVoiceOrKeyboard()
+	local input = io.voiceInput()
 	if input == nil or input == "" then
 		speakAndPrint("input error listening to value")
+		goto start
+	end
+	if input == "keyboard input" or input == "voice input" then
+		speakAndPrint("Switching input method")
 		goto start
 	end
 	--key, maxval=which_menu_item_is_most_simillar(input,numbers_table)

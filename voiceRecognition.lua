@@ -191,14 +191,28 @@ function convertWords2Numbers(input)
     return output
 end
 function io.voiceInput()
-	print("voice input ready:")
-	voiceRecord()
-	speakAndPrint("Processing...")
-	text=voiceRecognize()
-	text = string.lower(text:sub(1, -2)) --delete the last period
+	if defaultInputType=="voice" then --"keyboard"
+        print("voice input ready:")
+        voiceRecord()
+        speakAndPrint("Processing...")    
+        text=voiceRecognize()
+        text = string.lower(text:sub(1, -2)) --delete the last period
+    else
+        text=io.read()
+    end
+    if text == "voice input" then
+        defaultInputType="voice"
+        print("switching to voice input")
+        return "voice input"
+    end
 	if text=="yeah" then
 		text="yes"
 	end
+    if text == "keyboard input" or text == "the keyboard input" then
+        defaultInputType="keyboard"
+        print("switching to keyboard input")
+        return "keyboard input"
+    end
 	print("command recongnized as text:" .. text) --echo text
 	return text
 end
